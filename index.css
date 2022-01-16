@@ -56,6 +56,7 @@ html {
 }
 
 .menu {
+  overflow-y: scroll;
   position: absolute;
   top: 0;
   left: 0;
@@ -67,6 +68,17 @@ html {
   color: var(--settings--text-color);
   transform: translateY(-140vh);
   transition: transform 0.3s cubic-bezier(0.21, 0.9, 0.65, 1.35);
+}
+
+/* no scrollbar */
+.menu::-webkit-scrollbar {
+  width: 0 !important;
+}
+.menu {
+  overflow: -moz-scrollbars-none;
+}
+.menu {
+  -ms-overflow-style: none;
 }
 
 .toggleanim {

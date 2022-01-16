@@ -1,5 +1,5 @@
 let canvas = document.querySelector(".canvas");
-let canvasWrapper = document.querySelector(".canvas-wrapper")
+let canvasWrapper = document.querySelector(".canvas-wrapper");
 let context = canvas.getContext("2d");
 // let reset_buttom = document.querySelector("#reset-buttom");
 let WIDTH = canvasWrapper.clientWidth;
@@ -11,7 +11,7 @@ let fps;
 let FIXED_FPS = 30;
 
 // variables that are changed by buttons
-let UPDATES_PER_FRAME = 2;
+let UPDATES_PER_FRAME = 1;
 let POPULATION_SIZE = 100;
 
 // initialise Game Objects;
@@ -25,9 +25,15 @@ window.onload = init;
 function init() {
   canvas.width = WIDTH;
   canvas.height = HEIGHT;
+  // mousehandeling
   canvas.onmousedown = canvas_onmousedown;
   canvas.onmouseup = canvas_onmouseup;
   canvas.onmousemove = canvas_onmousemove;
+  // touchhandeling
+  canvas.addEventListener("touchstart", canvas_touchdown);
+  canvas.addEventListener("touchend", canvas_touchup);
+  canvas.addEventListener("touchmove", canvas_touchmove);
+
   context.font = "25px Arial";
   // menuInit();
   // reset_buttom.addEventListener('click', reset);
@@ -116,4 +122,16 @@ function getMousePos(e) {
   let rect = canvas.getBoundingClientRect();
   mouseX = ((e.clientX - rect.left) / (rect.right - rect.left)) * canvas.width;
   mouseY = ((e.clientY - rect.top) / (rect.bottom - rect.top)) * canvas.height;
+}
+
+function canvas_touchdown(e) {
+  console.log("test");
+  mouseDown = true;
+  getMousePos(e.touches[0]);
+}
+function canvas_touchup(e) {
+  mouseDown = false;
+}
+function canvas_touchmove(e) {
+  getMousePos(e.touches[0]);
 }

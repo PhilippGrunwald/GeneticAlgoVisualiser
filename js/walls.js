@@ -5,7 +5,7 @@ class Walls {
     this.amountX = Math.ceil(WIDTH / this.length);
     this.amountY = Math.ceil(HEIGHT / this.length);
     this.activeWalls = [];
-    console.log(this.cellLength);
+    //console.log(this.cellLength);
   }
 
   isActive(newWall) {
@@ -29,11 +29,15 @@ class Walls {
   }
 
   draw(context) {
-    context.fillStyle = '#3D405B';
+    context.fillStyle = "#3D405B";
     for (let wall of this.activeWalls) {
-      context.fillRect(wall[0] * this.cellLength, wall[1] * this.cellLength, this.cellLength, this.cellLength);
+      context.fillRect(
+        wall[0] * this.cellLength,
+        wall[1] * this.cellLength,
+        this.cellLength,
+        this.cellLength
+      );
       // context.fillRect(wall[0] * this.cellLength, wall[1] * this.cellLength, this.cellLength, 100);
-     
     }
   }
 

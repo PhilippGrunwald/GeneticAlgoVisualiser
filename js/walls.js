@@ -11,7 +11,7 @@ class Walls {
   isActive(newWall) {
     let wallActive = false;
     for (let wall of this.activeWalls) {
-      if (wall[0] === newWall[0] && wall[1] === newWall[1]) {
+      if (wall[0] == newWall[0] && wall[1] == newWall[1]) {
         wallActive = true;
       }
     }
@@ -19,6 +19,7 @@ class Walls {
   }
 
   addWall(x, y) {
+    console.log(this.activeWalls.length);
     let gridCoordX = Math.floor(x / this.cellLength);
     let gridCoordY = Math.floor(y / this.cellLength);
     let newWall = [gridCoordX, gridCoordY];

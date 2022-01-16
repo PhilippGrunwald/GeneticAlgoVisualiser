@@ -12,7 +12,7 @@ let FIXED_FPS = 30;
 
 // variables that are changed by buttons
 let UPDATES_PER_FRAME = 1;
-let POPULATION_SIZE = 100;
+let POPULATION_SIZE = 10;
 
 // initialise Game Objects;
 // popluation: size, x, y, radius, dna size
@@ -125,7 +125,6 @@ function getMousePos(e) {
 }
 
 function canvas_touchdown(e) {
-  console.log("test");
   mouseDown = true;
   getMousePos(e.touches[0]);
 }

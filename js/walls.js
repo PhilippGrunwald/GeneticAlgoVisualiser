@@ -19,7 +19,6 @@ class Walls {
   }
 
   addWall(x, y) {
-    console.log(this.activeWalls.length);
     let gridCoordX = Math.floor(x / this.cellLength);
     let gridCoordY = Math.floor(y / this.cellLength);
     let newWall = [gridCoordX, gridCoordY];

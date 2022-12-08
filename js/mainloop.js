@@ -12,7 +12,8 @@ let FIXED_FPS = 30;
 
 // variables that are changed by buttons
 let UPDATES_PER_FRAME = 1;
-let POPULATION_SIZE = 10;
+let POPULATION_SIZE = 20;
+let MUTATION_RATE = 0.05;
 
 // initialise Game Objects;
 // popluation: size, x, y, radius, dna size
@@ -35,7 +36,7 @@ function init() {
   canvas.addEventListener("touchmove", canvas_touchmove);
 
   context.font = "25px Arial";
-  // menuInit();
+  menuInit();
   // reset_buttom.addEventListener('click', reset);
   reset();
   // window.requestAnimationFrame(gameLoop);
@@ -52,7 +53,8 @@ function reset() {
     (HEIGHT * 7) / 8, // y
     HEIGHT / 40, // radius
     FIXED_FPS * 6, // dna size
-    target // target
+    target, // target
+    MUTATION_RATE
   );
 }
 
@@ -71,7 +73,7 @@ function gameLoop(timeStamp) {
   context.fillStyle = "black";
   context.fillText("FPS: " + fps, 10, 30);
 
-  // updateInputs(); // function in check_menu.js
+  updateInputs(); // function in check_menu.js
   update();
 
   draw();
@@ -87,12 +89,17 @@ function draw() {
 }
 
 function update() {
+  population.updatePopSize(POPULATION_SIZE);
   for (let i = 0; i < UPDATES_PER_FRAME; i++) {
     population.update();
     population.checkCollision(walls);
   }
 }
 
+//
+//
+//
+//
 // event handling
 
 let mouseDown = false;
